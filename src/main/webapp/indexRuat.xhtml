@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ruat="http://java.sun.com/jsf/composite/componenteui"
+	xmlns:ruatui="http://componentes.ruat/ruatui">
+<h:head>
+	<title>showcase</title>
+</h:head>
+<h:body>
+	<h:form>
+		<!-- 		implementar componentes -->
+		<h1>Componente: miComponente</h1>
+
+		<ruat:miComponente nombreEtiqueta="etiqueta"
+			valor="#{prueba.valorPrueba}"></ruat:miComponente>
+
+		<h1>Componente: tabla</h1>
+		<ruat:tabla listaDeValores="#{prueba.listTabla}" var="item" fila="#{item.id}"
+			filasSeleccionadas="#{prueba.selectDatos}">
+			<ruatui:columnaSeleccionMultiple seleccionMultiple="multiple"/>
+			<ruatui:columna titulo="Nombre" valor="#{item.nombre}" />
+			<ruatui:columna titulo="Apellidos" valor="#{item.apellidos}" />
+			<ruatui:columna titulo="Fecha Nac" valor="#{item.fechaNacimiento}" />
+
+		</ruat:tabla>
+
+		<p:commandButton value="ver" action="#{prueba.ver()}"></p:commandButton>
+
+		<ruat:commandlink valor="comnad link carol" accion="#{prueba.ir()}"></ruat:commandlink>
+	</h:form>
+</h:body>
+</html>

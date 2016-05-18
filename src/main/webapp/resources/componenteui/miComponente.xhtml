@@ -1,0 +1,21 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:mp="http://primefaces.org/ui/material">
+
+<composite:interface>
+	<composite:attribute name="nombreEtiqueta" />
+	<composite:attribute name="valor" />
+</composite:interface>
+
+<composite:implementation>
+	<p:outputLabel value="#{cc.attrs.nombreEtiqueta}" />
+	<p:inputText value="#{cc.attrs.valor}" />
+
+	<div class="row">
+		<h3>Floating Placeholder</h3>
+		<mp:input label="I will float!" />
+	</div>
+</composite:implementation>
+
+</html>

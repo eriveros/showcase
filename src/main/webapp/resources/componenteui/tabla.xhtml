@@ -1,0 +1,35 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+	<composite:interface>
+		<composite:attribute name="var" shortDescription="Variable de la lista de valores."/>
+		<composite:attribute name="listaDeValores" required="true" shortDescription="Lista de valores."/>
+		<composite:attribute name="responsivo" default="true" shortDescription="Adaptativo a pantallas pequeñas."/>
+		<composite:attribute name="visible" default="true" shortDescription="True hace visible el componente."/>		
+		<composite:attribute name="fila" shortDescription="Identificaro de la fila." />
+		<composite:attribute name="filasSeleccionadas" shortDescription="lista de filas seleccionadas."/>
+
+	</composite:interface>
+
+
+	<composite:implementation>
+
+		<p:dataTable id="tabla" value="#{cc.attrs.listaDeValores}"
+			reflow="#{cc.attrs.responsivo}" rendered="#{cc.attrs.visible}"
+			emptyMessage="No se encontraron resultados"
+			paginator="#{cc.attrs.listaDeValores.size() gt 10}" rows="10"
+			paginatorPosition="bottom"
+			paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {PageLinks} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+			currentPageReportTemplate="{currentPage} / {totalPages}"
+			rowKey="#{cc.attrs.fila}"
+			selection="#{cc.attrs.filasSeleccionadas}">			
+			<c:set target="#{component}" property="var" value="#{cc.attrs.var}" />
+			<composite:insertChildren>			
+				
+			</composite:insertChildren>
+		</p:dataTable>
+	</composite:implementation>
+</ui:composition>
